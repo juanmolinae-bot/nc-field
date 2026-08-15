@@ -1,0 +1,27 @@
+# Ambiente de PRUEBAS. Base efímera (sin volumen, se descarta al terminar),
+# corre las 28 pruebas y devuelve el código de salida de Jest. Es lo que
+# ejecutaría un pipeline de integración continua antes de liberar.
+services:
+  db-test:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: ncfield
+      POSTGRES_PASSWORD: ncfield_dev
+      POSTGRES_DB: ncfield_db
+    tmpfs: ["/var/lib/postgresql/data"]   # en memoria: rápida y sin rastro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ncfield -d ncfield_db"]
+      interval: 4s
+      timeout: 3s
+      retries: 5
+
+  test:
+    build: .
+    environment:
+      PGHOST: db-test
+      PGUSER: ncfield
+      PGPASSWORD: ncfield_dev
+      PGDATABASE: ncfield_db
+    depends_on:
+      db-test: { condition: service_healthy }
+    command: sh -c "node seed.js && npx jest --runInBand"
