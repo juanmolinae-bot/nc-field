@@ -42,10 +42,10 @@ export default function NuevaNC({ irA }) {
       <Marco>
         <Cabecera titulo="Nueva no conformidad" />
         <div className="px-5 flex-1 flex flex-col justify-center text-center">
-          <p className="text-[15px] font-bold text-tinta">
+          <p className="text-lg font-bold text-tinta">
             {enviada ? `Enviada como ${resultado.folio}` : 'Guardada en el equipo'}
           </p>
-          <p className="text-[13px] text-tinta mt-2 px-4">
+          <p className="text-base text-tinta mt-2 px-4">
             {enviada
               ? 'La NC quedó registrada en el servidor con su folio y su primera entrada de bitácora.'
               : 'No hay señal. La NC quedó en la cola y se envía sola al recuperar conexión.'}
@@ -63,11 +63,11 @@ export default function NuevaNC({ irA }) {
     <Marco>
       <Cabecera titulo="Nueva no conformidad" derecha={
         <button onClick={() => irA('listado')}
-          className="text-[11.5px] text-apagado underline underline-offset-2 hover:text-tinta">
+          className="text-sm text-apagado underline underline-offset-2 hover:text-tinta">
           Volver
         </button>} />
 
-      <div className="px-5 flex-1 flex flex-col">
+      <div className="px-6 py-4 flex-1 flex flex-col">
         <div className="space-y-3">
           <Campo etiqueta="Título" valor={f.titulo} onChange={set('titulo')}
                  placeholder="Ej: Falta torque en conexión" />

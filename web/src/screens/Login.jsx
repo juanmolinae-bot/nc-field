@@ -26,8 +26,8 @@ export default function Login({ alEntrar }) {
   return (
     <Marco>
       <Cabecera titulo="NC-Field" />
-      <div className="px-5 flex-1 flex flex-col">
-        <h2 className="text-[26px] font-bold text-tinta text-center mt-12 mb-8">Iniciar sesión</h2>
+      <div className="px-6 flex-1 flex flex-col justify-center max-w-md mx-auto w-full">
+        <h2 className="text-3xl font-bold text-tinta text-center mt-12 mb-8">Iniciar sesión</h2>
 
         <div className="space-y-4">
           <Campo etiqueta="Usuario" valor={usuario} onChange={setUsuario} placeholder="jmolina" />
@@ -39,12 +39,12 @@ export default function Login({ alEntrar }) {
         </Boton>
 
         {error && (
-          <p className="mt-3 text-[12.5px] text-tinta border border-tinta bg-t3 px-3 py-2">{error}</p>
+          <p className="mt-3 text-sm text-tinta border border-tinta bg-t3 px-3 py-2">{error}</p>
         )}
 
         <div className="mt-8 flex justify-center">
           <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-t3 border border-borde
-                           rounded-full text-[11px] text-apagado">
+                           rounded-full text-sm text-apagado">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
             Modo offline disponible
           </span>

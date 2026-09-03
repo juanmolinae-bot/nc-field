@@ -36,19 +36,19 @@ export default function Listado({ irA, sesion, salir }) {
     <Marco>
       <Cabecera titulo="No conformidades" derecha={
         <button onClick={salir}
-          className="text-[11.5px] text-apagado underline underline-offset-2 hover:text-tinta">
+          className="text-sm text-apagado underline underline-offset-2 hover:text-tinta">
           {sesion.nombre} · Salir
         </button>} />
 
-      <div className="px-5 flex-1 flex flex-col">
+      <div className="px-6 py-4 flex-1 flex flex-col">
         <input value={busca} onChange={(e) => setBusca(e.target.value)}
           placeholder="Buscar por folio, TAG o severidad"
-          className="w-full h-[38px] bg-t3 border border-borde px-3 text-[13px] text-tinta
+          className="w-full h-12 bg-t3 border border-borde px-3 text-base text-tinta
                      placeholder-apagado focus:outline-none focus:border-tinta" />
 
         {pend > 0 && (
           <button onClick={() => irA('sync')}
-            className="mt-3 w-full bg-t2 border border-tinta px-3 py-2 text-[12.5px]
+            className="mt-3 w-full bg-t2 border border-tinta px-3 py-2 text-sm
                        font-bold text-tinta text-left hover:bg-t1">
             {pend} NC pendiente{pend > 1 ? 's' : ''} de envío · toca para sincronizar
           </button>
@@ -57,8 +57,8 @@ export default function Listado({ irA, sesion, salir }) {
         <div className="mt-3 space-y-2 flex-1">
           {error === 'sin_red' && locales.length === 0 && (
             <div className="border border-borde bg-t3 px-4 py-6 text-center">
-              <p className="text-[13px] font-bold text-tinta">Sin conexión</p>
-              <p className="text-[12px] text-apagado mt-1">
+              <p className="text-base font-bold text-tinta">Sin conexión</p>
+              <p className="text-sm text-apagado mt-1">
                 Modo offline activo
               </p>
             </div>
@@ -66,10 +66,10 @@ export default function Listado({ irA, sesion, salir }) {
 
           {!error && visibles.length === 0 && (
             <div className="border border-borde bg-t3 px-4 py-6 text-center">
-              <p className="text-[13px] font-bold text-tinta">
+              <p className="text-base font-bold text-tinta">
                 {filtro ? 'Ningún resultado' : 'Todavía no hay no conformidades'}
               </p>
-              <p className="text-[12px] text-tinta mt-1">
+              <p className="text-sm text-tinta mt-1">
                 {filtro ? 'Prueba con otro folio, TAG o severidad.' : 'Levanta la primera con “+ Nueva NC”.'}
               </p>
             </div>
@@ -80,9 +80,9 @@ export default function Listado({ irA, sesion, salir }) {
               className={`w-full text-left border border-borde px-3 py-2.5
                           ${i % 2 === 0 ? 'bg-t1' : 'bg-white'}
                           ${n.local ? 'cursor-default' : 'hover:bg-t2'}`}>
-              <p className="text-[14px] font-bold text-tinta">{n.folio}</p>
-              <p className="text-[12.5px] text-tinta mt-0.5">{n.tag_equipo || n.titulo}</p>
-              <p className="text-[11.5px] text-apagado mt-0.5 flex items-center gap-1.5">
+              <p className="text-base font-bold text-tinta">{n.folio}</p>
+              <p className="text-sm text-tinta mt-0.5">{n.tag_equipo || n.titulo}</p>
+              <p className="text-sm text-apagado mt-0.5 flex items-center gap-1.5">
                 <span className={`inline-block w-2 h-2 rounded-full ${
                   n.estado === 'abierta' ? 'bg-amber-500' :
                   n.estado === 'en_tratamiento' ? 'bg-blue-500' :

@@ -63,17 +63,17 @@ export default function Detalle({ id, irA, sesion }) {
     <Marco>
       <Cabecera titulo={nc.folio} derecha={
         <button onClick={() => irA('listado')}
-          className="text-[11.5px] text-apagado underline underline-offset-2 hover:text-tinta">
+          className="text-sm text-apagado underline underline-offset-2 hover:text-tinta">
           Volver
         </button>} />
 
-      <div className="px-5 flex-1 flex flex-col pb-5">
+      <div className="px-6 py-4 flex-1 flex flex-col pb-6">
         <div className="bg-t1 border border-borde px-3 py-2.5">
-          <p className="text-[14px] font-bold text-tinta">{nc.titulo}</p>
-          <p className="text-[12.5px] text-tinta mt-0.5">
+          <p className="text-base font-bold text-tinta">{nc.titulo}</p>
+          <p className="text-sm text-tinta mt-0.5">
             {nc.tag_equipo || 'Sin TAG'}  ·  {SEV[nc.severidad]}
           </p>
-          <p className="text-[13px] font-bold text-tinta mt-1 flex items-center gap-2">
+          <p className="text-base font-bold text-tinta mt-1 flex items-center gap-2">
             <span className={`inline-block w-2.5 h-2.5 rounded-full ${
               nc.estado === 'abierta' ? 'bg-amber-500' :
               nc.estado === 'en_tratamiento' ? 'bg-blue-500' :
@@ -85,29 +85,29 @@ export default function Detalle({ id, irA, sesion }) {
         </div>
 
         {nc.norma_ref && (
-          <p className="text-[12px] text-apagado mt-2">Norma de referencia: {nc.norma_ref}</p>
+          <p className="text-sm text-apagado mt-2">Norma de referencia: {nc.norma_ref}</p>
         )}
-        <p className="text-[12.5px] text-tinta mt-2">{nc.descripcion}</p>
+        <p className="text-sm text-tinta mt-2">{nc.descripcion}</p>
 
-        <h3 className="text-[14px] font-bold text-tinta mt-5 mb-2">Bitácora (solo inserción)</h3>
+        <h3 className="text-base font-bold text-tinta mt-5 mb-2">Bitácora (solo inserción)</h3>
         <div className="relative ml-3 border-l-2 border-borde pl-4 space-y-3">
           {hist.map((h, i) => (
             <div key={i} className="relative">
               <span className="absolute -left-[21px] top-1 w-2.5 h-2.5 rounded-full bg-t2 border-2 border-borde" />
-              <p className="text-[12.5px] font-bold text-tinta">
+              <p className="text-sm font-bold text-tinta">
                 {ETIQUETA[h.estado_desde]} → {ETIQUETA[h.estado_hasta]}
               </p>
-              <p className="text-[10.5px] text-apagado">
+              <p className="text-xs text-apagado">
                 {h.usuario} · {fecha(h.registrado)}
               </p>
-              {h.comentario && <p className="text-[11px] text-tinta mt-0.5">{h.comentario}</p>}
+              {h.comentario && <p className="text-sm text-tinta mt-0.5">{h.comentario}</p>}
             </div>
           ))}
         </div>
 
-        <h3 className="text-[14px] font-bold text-tinta mt-5 mb-2">Evidencia</h3>
+        <h3 className="text-base font-bold text-tinta mt-5 mb-2">Evidencia</h3>
         {ev.length === 0 ? (
-          <p className="text-[12px] text-apagado">
+          <p className="text-sm text-apagado">
             Sin evidencia adjunta. Se agrega al levantar la NC o desde el equipo.
           </p>
         ) : (
@@ -115,8 +115,8 @@ export default function Detalle({ id, irA, sesion }) {
             {ev.map((e) => (
               <div key={e.id} className="bg-t3 border border-borde px-2 py-4 text-center"
                    title={`${e.nombre_arch}\nSHA-256 ${e.sha256}`}>
-                <p className="text-[11px] text-tinta">SHA-256 ✓</p>
-                <p className="text-[9px] text-apagado mt-1 font-mono truncate">
+                <p className="text-sm text-tinta">SHA-256 ✓</p>
+                <p className="text-xs text-apagado mt-1 font-mono truncate">
                   {e.sha256.slice(0, 8)}…
                 </p>
               </div>
@@ -125,12 +125,12 @@ export default function Detalle({ id, irA, sesion }) {
         )}
 
         {error && (
-          <p className="mt-4 text-[12.5px] text-tinta border border-tinta bg-t3 px-3 py-2">{error}</p>
+          <p className="mt-4 text-sm text-tinta border border-tinta bg-t3 px-3 py-2">{error}</p>
         )}
 
         <div className="mt-auto pt-5">
           {acciones.length === 0 ? (
-            <p className="text-[12px] text-apagado italic">
+            <p className="text-sm text-apagado italic">
               {nc.estado === 'cerrada' || nc.estado === 'rechazada'
                 ? 'Esta NC está cerrada. La bitácora queda como respaldo permanente.'
                 : `Tu rol (${sesion.rol}) no ejecuta el siguiente paso de esta NC.`}

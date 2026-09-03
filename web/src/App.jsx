@@ -28,7 +28,7 @@ export default function App() {
     <>
       {pantalla}
       <nav className="fixed bottom-0 inset-x-0 bg-white border-t border-borde shadow-[0_-2px_8px_rgba(0,0,0,0.06)]">
-        <div className="max-w-[880px] mx-auto flex">
+        <div className="max-w-[1200px] mx-auto flex">
           {[['listado', '☰', 'NC'], ['sync', '↑↓', 'Sync'], ['tablero', '▦', 'Tablero']]
             .map(([p, icono, l]) => (
               <button key={p} onClick={() => irA(p)}

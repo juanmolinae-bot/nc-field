@@ -20,18 +20,18 @@ export default function Tablero({ irA, sesion }) {
 
   // El 403 no es un fallo: es el sistema haciendo lo que debe.
   if (negado) return (
-    <Marco ancho="max-w-[880px]">
+    <Marco ancho="max-w-[1200px]">
       <Cabecera titulo="Tablero de control" derecha={
         <button onClick={() => irA('listado')}
-          className="text-[11.5px] text-apagado underline underline-offset-2 hover:text-tinta">
+          className="text-sm text-apagado underline underline-offset-2 hover:text-tinta">
           Volver
         </button>} />
       <div className="px-6 flex-1 flex flex-col justify-center text-center">
         <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-t1 flex items-center justify-center">
           <span className="text-[28px]">⊘</span>
         </div>
-        <p className="text-[16px] font-bold text-tinta">Acceso restringido</p>
-        <p className="text-[13px] text-apagado mt-2 max-w-sm mx-auto">
+        <p className="text-xl font-bold text-tinta">Acceso restringido</p>
+        <p className="text-base text-apagado mt-2 max-w-sm mx-auto">
           Tu perfil no tiene permisos para ver los indicadores del proyecto.
         </p>
       </div>
@@ -50,10 +50,10 @@ export default function Tablero({ irA, sesion }) {
                   ['16-30 días', (d) => d > 15 && d <= 30], ['> 30 días', (d) => d > 30]];
 
   return (
-    <Marco ancho="max-w-[880px]">
+    <Marco ancho="max-w-[1200px]">
       <Cabecera titulo="Tablero de control — BESS Cristales" derecha={
         <button onClick={() => irA('listado')}
-          className="text-[11.5px] text-apagado underline underline-offset-2 hover:text-tinta">
+          className="text-sm text-apagado underline underline-offset-2 hover:text-tinta">
           Volver
         </button>} />
 
@@ -63,8 +63,8 @@ export default function Tablero({ irA, sesion }) {
             const colores = ['border-l-amber-500', 'border-l-blue-500', 'border-l-purple-500', 'border-l-emerald-500'];
             return (
               <div key={k} className={`bg-white border border-borde ${colores[i]} border-l-[3px] py-4 text-center`}>
-                <p className="text-[30px] font-bold text-tinta leading-none">{suma(k)}</p>
-                <p className="text-[11.5px] text-apagado mt-1.5">{l}</p>
+                <p className="text-4xl font-bold text-tinta leading-none">{suma(k)}</p>
+                <p className="text-sm text-apagado mt-1.5">{l}</p>
               </div>
             );
           })}
@@ -72,19 +72,19 @@ export default function Tablero({ irA, sesion }) {
 
         <div className="grid grid-cols-[1fr_320px] gap-5 mt-5">
           <div>
-            <h3 className="text-[13.5px] font-bold text-tinta mb-2">NC por severidad</h3>
+            <h3 className="text-base font-bold text-tinta mb-2">NC por severidad</h3>
             <div className="space-y-2">
               {SEV.map(([s, l], i) => {
                 const v = porSev(s);
                 return (
                   <div key={s} className="flex items-center gap-2">
-                    <span className="w-16 text-[12px] text-tinta">{l}</span>
+                    <span className="w-16 text-sm text-tinta">{l}</span>
                     <div className="flex-1 h-[22px] relative">
                       <div className={`${i === 0 ? 'bg-t1' : i === 1 ? 'bg-t2' : 'bg-t3'}
                                        border border-borde h-full`}
                            style={{ width: `${Math.max(4, (v / maxSev) * 100)}%` }} />
                     </div>
-                    <span className="w-6 text-[12px] text-tinta text-right">{v}</span>
+                    <span className="w-6 text-sm text-tinta text-right">{v}</span>
                   </div>
                 );
               })}
@@ -92,11 +92,11 @@ export default function Tablero({ irA, sesion }) {
           </div>
 
           <div className="bg-t3 border border-borde p-3">
-            <h3 className="text-[12px] font-bold text-tinta text-center mb-2">
+            <h3 className="text-sm font-bold text-tinta text-center mb-2">
               Antigüedad de NC abiertas
             </h3>
             {rangos.map(([l, test]) => (
-              <div key={l} className="flex justify-between text-[11.5px] text-tinta py-0.5">
+              <div key={l} className="flex justify-between text-sm text-tinta py-0.5">
                 <span>{l}</span>
                 <span className="font-bold">{abiertas.filter((n) => test(dias(n.creada_en))).length}</span>
               </div>
